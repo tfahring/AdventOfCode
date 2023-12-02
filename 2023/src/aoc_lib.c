@@ -213,6 +213,11 @@ is_alphanumeric(char c) {
     return(is_alpha(c) || is_numeric(c));
 }
 
+FUNCTION b32 
+is_whitespace(char c) {
+    return((c == ' ') || (c == '\t') || (c == '\r'));
+}
+
 FUNCTION u8 
 to_lower(u8 c) {
     b32 isAlphaUpperCase = (c  >= 'A' && c <= 'Z');
@@ -229,6 +234,18 @@ to_upper(u8 c) {
         c -= 32;
     }
     return(c);
+}
+
+FUNCTION s64 
+string_to_int64(u8 *ptr, u64 length) {
+    s64 result = 0;
+    s64 mult   = 1;
+    for (s64 idx = (length-1); idx >= 0; --idx) {
+        u8 val  = (ptr[idx] - (u8)'0');
+        result += (s64)val * mult;
+        mult   *= 10;
+    }
+    return(result);
 }
 
 // UTF-8

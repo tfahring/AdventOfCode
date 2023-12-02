@@ -226,6 +226,12 @@ FUNCTION b32 wstr_compare(wchar_t *strA, wchar_t *strB);
 FUNCTION b32 is_alpha(char c);
 FUNCTION b32 is_numeric(char c);
 FUNCTION b32 is_alphanumeric(char c);
+FUNCTION b32 is_whitespace(char c);
+
+FUNCTION u8 to_lower(u8 c);
+FUNCTION u8 to_upper(u8 c);
+
+FUNCTION s64 string_to_int64(u8 *ptr, u64 length);
 
 // UTF-8
 FUNCTION s32 utf8_decode(u8 *str, u32 *codepoint);
