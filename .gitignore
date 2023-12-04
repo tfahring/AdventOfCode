@@ -3,3 +3,5 @@
 build/
 *.sublime-project
 *.sublime-workspace
+*.sln
+.vs/

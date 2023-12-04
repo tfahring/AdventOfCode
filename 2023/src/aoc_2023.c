@@ -15,6 +15,7 @@ THREAD_LOCAL MEM_ScratchArenaPool scratchArenaPool;
 #include "aoc_2023_day1.c"
 #include "aoc_2023_day2.c"
 #include "aoc_2023_day3.c"
+#include "aoc_2023_day4.c"
 
 int main(int argc, char *argv[]) {
     os_init();
@@ -26,6 +27,9 @@ int main(int argc, char *argv[]) {
     // day2_part1(&arena);
     // day2_part2(&arena);
 
-    day3_part1(&arena);
-    day3_part2(&arena);
+    // day3_part1(&arena);
+    // day3_part2(&arena);
+
+    day4_part1(&arena);
+    day4_part2(&arena);
 }
