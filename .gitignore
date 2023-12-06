@@ -1,6 +1,7 @@
 # Specify filepatterns you want git to ignore.
 
 build/
+data/
 *.sublime-project
 *.sublime-workspace
 *.sln
