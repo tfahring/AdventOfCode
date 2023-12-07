@@ -1367,6 +1367,8 @@ os_file_read_all(MemoryArena *arena, String8 fileName) {
     os_file_read_block(fileID, result.buffer, result.length);
     result.buffer[result.length] = '\0';
 
+    os_file_close(fileID);
+
     return(result);
 }
 
