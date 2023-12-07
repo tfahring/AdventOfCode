@@ -510,5 +510,10 @@ FUNCTION String8List os_get_filenames_in_dir(MemoryArena *arena, String8 dir);
 FUNCTION String8 os_zip  (MemoryArena *arena, String8 uncompressed);
 FUNCTION String8 os_unzip(MemoryArena *arena, String8 compressed);
 
+//------------------------------------------------------------------------
+// SORT
+//------------------------------------------------------------------------
+typedef int64_t (*qsort_cmp_fn)(void*,void*);
+FUNCTION void quicksort(void *v, int64_t sizeOfElement, int64_t left, int64_t right, qsort_cmp_fn fn);
 
 #endif // AOC_LIB_H

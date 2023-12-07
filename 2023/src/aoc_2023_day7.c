@@ -73,42 +73,6 @@ getHandType(String8 hand) {
     return(result);
 }
 
-typedef int64_t (*qsort_cmp_fn)(void*,void*);
-static void _swap(void *v1, void *v2, int64_t sizeOfElement)
-{
-    char tmp[32];
-    os_mem_copy(tmp, v1, sizeOfElement);
-    os_mem_copy(v1, v2, sizeOfElement);
-    os_mem_copy(v2, tmp, sizeOfElement);
-}
-
-FUNCTION void quicksort(void *v, int64_t sizeOfElement, int64_t left, int64_t right, qsort_cmp_fn fn)
-{
-    if (left >= right)
-        return;
-
-    int64_t mid = (left + right) / 2;
-
-    void *vL = ((char*)v + (left * sizeOfElement));
-    void *vR = ((char*)v + (mid * sizeOfElement));
-    _swap(vL,vR,sizeOfElement);
-    int64_t last = left;
-    void *v3 = NULL;
-    for (int64_t idx = left + 1; idx <= right; ++idx) {
-        void *vt = ((char*)v + (idx *sizeOfElement));
-        if (fn(vL,vt) > 0) {
-            ++last;
-            v3 = ((char*)v + (last*sizeOfElement));
-            _swap(vt,v3,sizeOfElement);
-        }
-    }
-    v3 = ((char*)v + (last*sizeOfElement));
-    _swap(vL,v3,sizeOfElement);
-    quicksort(v, sizeOfElement, left, last-1, fn);
-    quicksort(v, sizeOfElement, last+1, right, fn);
-}
-
-
 static int64_t 
 handCmp(void *h0, void *h1) {
     Hand *hand0 = (Hand*)h0;
@@ -132,7 +96,6 @@ handCmp(void *h0, void *h1) {
     }
     return(0);
 }
-
 
 static void 
 day7_part1(MemoryArena *arena) {
