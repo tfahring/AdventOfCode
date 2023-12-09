@@ -238,12 +238,21 @@ to_upper(u8 c) {
 
 FUNCTION s64 
 string_to_int64(u8 *ptr, u64 length) {
+    b32 negate = false;
+    if (*ptr == '-') {
+        negate = true;
+        ptr++;
+        length--;
+    }
     s64 result = 0;
     s64 mult   = 1;
     for (s64 idx = (length-1); idx >= 0; --idx) {
         u8 val  = (ptr[idx] - (u8)'0');
         result += (s64)val * mult;
         mult   *= 10;
+    }
+    if (negate) {
+        result = -result;
     }
     return(result);
 }
