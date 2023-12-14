@@ -26,10 +26,11 @@ THREAD_LOCAL MEM_ScratchArenaPool scratchArenaPool;
 #include "aoc_2023_day11.c"
 #include "aoc_2023_day12.c"
 #include "aoc_2023_day13.c"
+#include "aoc_2023_day14.c"
 
 int main(int argc, char *argv[]) {
     os_init();
-    MemoryArena arena = mem_arena_init(GIGABYTES(1));
+    MemoryArena arena = mem_arena_init(GIGABYTES(4));
 
     // day1_part1(&arena);
     // day1_part2(&arena);
@@ -67,6 +68,9 @@ int main(int argc, char *argv[]) {
     // day12_part1(&arena);
     // day12_part2(&arena);
 
-    day13_part1(&arena);
-    day13_part2(&arena);
+    // day13_part1(&arena);
+    // day13_part2(&arena);
+
+    day14_part1(&arena);
+    day14_part2(&arena);
 }
