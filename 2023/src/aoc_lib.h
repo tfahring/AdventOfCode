@@ -147,12 +147,18 @@ typedef void VoidFn(void);
 #define DLL_PUSH_BACK(first,last,node)  DLL_PUSH_BACK_NP(first,last,node,next,prev)
 #define DLL_PUSH_FRONT(first,last,node) DLL_PUSH_BACK_NP(last,first,node,prev,next)
 
-#define DLL_REMOVE_NP(first,last,node,next,prev) (((first) == (node)?\
-                                                  ((first) = (first)->next, (first)->prev = NULL):\
-                                                   (last) == (node) ?\
-                                                  ((last) = (last)->prev, (last)->next = NULL):\
-                                                  ((node)->next->prev = (node)->prev,\
-                                                   (node)->prev->next = (node)->next)))
+// #define DLLRemove_NP(f,l,n,next,prev) 
+
+// ((f)==(n) ? 
+//  ((f)==(l) ? ((f)=(l)=(0)) : ((f)=(f)->next,(f)->prev=0)) : 
+//   (l)==(n) ? ((l)=(l)->prev,(l)->next=0)  : 
+//              ((n)->next->prev=(n)->prev, (n)->prev->next=(n)->next))
+
+#define DLL_REMOVE_NP(first,last,node,next,prev) ((first) == (node)?\
+                                                 ((first)==(last) ? ((first)=(last)=(0)) : ((first)=(first)->next,(first)->prev=0)):\
+                                                  (last)==(node) ? ((last)=(last)->prev,(last)->next=0) :\
+                                                 ((node)->next->prev=(node)->prev, (node)->prev->next=(node)->next))
+
 #define DLL_REMOVE(first,last,node) DLL_REMOVE_NP(first,last,node,next,prev)
 
 #define SLL_QUEUE_PUSH_N(first,last,node,next) ((first) == NULL ?\

@@ -407,7 +407,7 @@ string8_copy(MemoryArena *arena, String8 str) {
 
 FUNCTION String8 
 string8_from_cstr(char *cstr) {
-    String8 result = {(u8*)cstr, cstr_length(cstr)};
+    String8 result = string8((u8*)cstr, cstr_length(cstr));
     return(result);
 }
 
@@ -420,7 +420,7 @@ string8_from_wstr(MemoryArena *arena, wchar_t *wstr) {
 
 FUNCTION String8 
 string8_from_range(u8 *start, u8 *end) {
-    String8 result = {start, (u64)(end - start)};
+    String8 result = string8(start, (u64)(end - start));
     return(result);
 }
 
